@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finances Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Finances Dashboard</h1>
+
+        <div class="grid">
+            <!-- Input forms -->
+            <div class="card" id="input-forms">
+                <h2>Add Income/Expense</h2>
+                <form id="transaction-form">
+                    <select id="type" required>
+                        <option value="income">Income</option>
+                        <option value="expenses">Expense</option>
+                    </select>
+                    <div class="currency-selector">
+                        <input type="text" id="currency-search" placeholder="Search currency or country">
+                        <select id="currency" required>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <input type="number" id="amount" placeholder="Amount" required>
+                    <input type="text" id="category" placeholder="Category" required>
+                    <input type="date" id="date" required>
+                    <button type="submit">Add Transaction</button>
+                </form>
+            </div>
+
+            <!-- Dashboard -->
+            <div class="card" id="dashboard">
+                <h2>Dashboard</h2>
+                <canvas id="balance-chart"></canvas>
+                <div id="budget-summary"></div>
+            </div>
+
+            <!-- Categories -->
+            <div class="card" id="categories">
+                <h2>Categories</h2>
+                <canvas id="income-category-chart"></canvas>
+                <canvas id="expense-category-chart"></canvas>
+                <div id="categories-list"></div>
+            </div>
+
+            <!-- Monthly View -->
+            <div class="card" id="monthly-view">
+                <h2>Monthly View</h2>
+                <canvas id="monthly-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Data Management -->
+        <div class="card" id="data-management">
+            <h2>Data Management</h2>
+            <button id="save-btn">Save Data to Device</button>
+            <button id="load-btn">Load Data from Device</button>
+            <button id="download-summary-btn">Download Budget Summary</button>
+            <input type="file" id="file-input" accept=".json" style="display: none;">
+        </div>
+
+        <!-- Tutorial -->
+        <div id="tutorial">
+            <h2>How to Use</h2>
+            <ol>
+                <li>Add your income and expenses using the form on the left.</li>
+                <li>View your overall financial health in the Dashboard.</li>
+                <li>Check your spending and income by category in the Categories section.</li>
+                <li>Track your monthly financial trends in the Monthly View.</li>
+                <li>All your data is stored locally in your browser for privacy.</li>
+            </ol>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
